@@ -1,0 +1,67 @@
+{
+  "request_id": "REQ-0001",
+  "events": [
+    {
+      "event_id": "EVT-0001",
+      "request_id": "REQ-0001",
+      "actor": "sistema-externo",
+      "role": "intaker",
+      "phase": "intake",
+      "action": "submitted",
+      "timestamp": "2026-05-19T18:00:00Z",
+      "payload": {
+        "type": "feature_request",
+        "summary": "Añadir endpoint de healthcheck",
+        "description": "Se necesita un endpoint GET /health que retorne 200 cuando el servicio esté operativo."
+      }
+    },
+    {
+      "event_id": "EVT-0002",
+      "request_id": "REQ-0001",
+      "actor": "agente-governance",
+      "role": "governor",
+      "phase": "governance",
+      "action": "reviewed",
+      "timestamp": "2026-05-19T18:05:00Z",
+      "payload": {
+        "decision": "approved",
+        "rationale": "Cambio de bajo riesgo, estándar en servicios HTTP. No requiere análisis adicional.",
+        "constraints": ["cumplir con politicá de naming vigente"]
+      }
+    },
+    {
+      "event_id": "EVT-0003",
+      "request_id": "REQ-0001",
+      "actor": "agente-validator",
+      "role": "validator",
+      "phase": "validation",
+      "action": "validated",
+      "timestamp": "2026-05-19T18:06:00Z",
+      "payload": {
+        "checks": [
+          {"rule": "cumplimiento_politicas", "status": "pass"},
+          {"rule": "alcance_definido", "status": "pass"},
+          {"rule": "sin_conflictos_recursos", "status": "pass"}
+        ],
+        "result": "valid"
+      }
+    },
+    {
+      "event_id": "EVT-0004",
+      "request_id": "REQ-0001",
+      "actor": "agente-executor",
+      "role": "executor",
+      "phase": "execution",
+      "action": "executed",
+      "timestamp": "2026-05-19T18:10:00Z",
+      "payload": {
+        "result": "success",
+        "output": {
+          "file": "src/handlers/health.go",
+          "endpoint": "GET /health",
+          "status_code": 200
+        }
+      }
+    }
+  ]
+}
